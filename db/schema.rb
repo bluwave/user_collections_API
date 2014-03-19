@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140319175117) do
+ActiveRecord::Schema.define(version: 20140319183611) do
 
   create_table "collections", force: true do |t|
-    t.string   "name"
-    t.integer  "owner"
+    t.string   "name",       null: false
+    t.integer  "owner",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

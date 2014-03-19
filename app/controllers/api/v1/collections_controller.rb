@@ -1,4 +1,5 @@
 class API::V1::CollectionsController < ApplicationController
+
   # GET /collections
   # GET /collections.json
   def index
@@ -18,12 +19,11 @@ class API::V1::CollectionsController < ApplicationController
   # POST /collections.json
   def create
     @collection = Collection.new(collection_params)
-
-    if @collection.save
-      render json: @collection
-    else
-      render json: @collection.errors, status: :unprocessable_entity
-    end
+      if @collection.save!
+        render json: @collection
+      else
+        render json: @collection.errors, status: :unprocessable_entity
+      end
   end
 
   # PATCH/PUT /collections/1
