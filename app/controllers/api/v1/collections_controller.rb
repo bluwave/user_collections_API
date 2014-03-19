@@ -19,7 +19,7 @@ class API::V1::CollectionsController < ApplicationController
   # POST /collections.json
   def create
     @collection = Collection.new(collection_params)
-      if @collection.save!
+      if @collection.save
         render json: @collection
       else
         render json: @collection.errors, status: :unprocessable_entity

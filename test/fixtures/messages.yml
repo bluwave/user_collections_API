@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  collection_id: 1
+  author: 1
+  notes: MyText
+  pdp_id: 1
+  image_id: 1
+  rating: 1
+
+two:
+  collection_id: 1
+  author: 1
+  notes: MyText
+  pdp_id: 1
+  image_id: 1
+  rating: 1

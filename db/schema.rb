@@ -11,11 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140319183611) do
+ActiveRecord::Schema.define(version: 20140319210107) do
+
+  create_table "collection_connections", force: true do |t|
+    t.integer  "collection_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "collections", force: true do |t|
     t.string   "name",       null: false
-    t.integer  "owner",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "messages", force: true do |t|
+    t.integer  "collection_id", null: false
+    t.integer  "user_id",       null: false
+    t.text     "notes"
+    t.integer  "pdp_id"
+    t.integer  "image_id"
+    t.integer  "rating"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

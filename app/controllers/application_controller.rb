@@ -3,6 +3,7 @@ class ApplicationController < ActionController::API
   rescue_from ActiveRecord::StatementInvalid, :with => :unsaveable_identity_handler
 
   rescue_from  Exception do |e|
+    p "***application error handler: #{e.inspect}"
     error(e)
   end
 

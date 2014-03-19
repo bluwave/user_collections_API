@@ -6,5 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Collection.create(:name => "homes near trulia", :owner => 1)
-Collection.create(:name => "homes near concord", :owner => 2)
+
+john = User.create(:email => "john@doe.com")
+jane = User.create(:email => "jane@doe.com")
+c1 = Collection.create(:name => "homes near trulia" )
+c2 = Collection.create(:name => "homes near concord")
+CollectionConnection.create(:collection => c1, :user => john)
+CollectionConnection.create(:collection => c1, :user => jane)
+CollectionConnection.create(:collection => c2, :user => jane)
