@@ -3,7 +3,16 @@ class API::V1::CollectionsController < ApplicationController
   # GET /collections
   # GET /collections.json
   def index
-    @collections = Collection.all
+
+    if(params[:user_id])
+      u = User.find(params[:user_id])
+      @collections = u.collections
+    else
+      p "\n** could not find user id **\n"
+      @collections = Collection.all
+    end
+
+
     render json: @collections
   end
 
@@ -18,12 +27,19 @@ class API::V1::CollectionsController < ApplicationController
   # POST /collections
   # POST /collections.json
   def create
-    @collection = Collection.new(collection_params)
-      if @collection.save
-        render json: @collection
+
+    if (params[:user] && params[:collection])
+      res = CollectionUserTransaction.save_user_and_collection(params)
+      if (res.instance_of?(String))
+        error_info = {:error => res}
+        render json: error_info.to_json, status: :unprocessable_entity
       else
-        render json: @collection.errors, status: :unprocessable_entity
+        render json: res
       end
+    else
+      error_info = {:error => "need user and collection"}
+      render json: error_info.to_json, status: :unprocessable_entity
+    end
   end
 
   # PATCH/PUT /collections/1
@@ -48,6 +64,10 @@ class API::V1::CollectionsController < ApplicationController
   end
 
   def collection_params
-    params.permit(:name, :owner)
+    params.permit(:name)
+  end
+
+  def new_user_collection_params
+    params.permit(:user, :collection)
   end
 end

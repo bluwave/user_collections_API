@@ -1,8 +1,14 @@
-class MessagesController < ApplicationController
+class API::V1::MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    @messages = Message.all
+
+    u = User.find(params[:user_id])
+    c =  Collection.find params[:collection_id]
+    # may want to check if c.users has u in it?
+    @messages = c.messages
+
+    # @messages = Message.all
 
     render json: @messages
   end
@@ -18,10 +24,16 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-    @message = Message.new(params[:message])
+
+    u = params[:user_id]
+    c = params[:collection_id]
+
+    @message = Message.new(message_params)
+    @message.collection_id = c
+    @message.user_id = u
 
     if @message.save
-      render json: @message, status: :created, location: @message
+      render json: @message
     else
       render json: @message.errors, status: :unprocessable_entity
     end
@@ -46,5 +58,9 @@ class MessagesController < ApplicationController
     @message.destroy
 
     head :no_content
+  end
+
+  def message_params
+    params.permit(:notes, :pdp_id, :image_id, :rating)
   end
 end

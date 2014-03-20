@@ -38,7 +38,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.25.1)
     minitest (4.7.5)
-    multi_json (1.9.0)
+    multi_json (1.9.2)
     polyglot (0.3.4)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -78,6 +78,7 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.39)
+    vine (0.0.2)
 
 PLATFORMS
   ruby
@@ -87,3 +88,4 @@ DEPENDENCIES
   rails (= 4.0.0)
   rails-api
   sqlite3
+  vine

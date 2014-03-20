@@ -5,7 +5,7 @@ gem 'rails', '4.0.0'
 gem 'rails-api'
 gem 'sqlite3'
 gem 'active_model_serializers'
-
+gem 'vine'
 
 
 # To use ActiveModel has_secure_password
