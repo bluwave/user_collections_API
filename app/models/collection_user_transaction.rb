@@ -41,16 +41,13 @@ class CollectionUserTransaction < ActiveRecord::Base
     users = params[:users]
     user_arr = []
     users.each do |user|
-      u = User.find_by_email(user[:email])
+      u = User.find_by_email(user[:email].downcase!)
       if(!u)
         u = User.new(user)
         if( u.save!)
         else
           return u.errors.full_messages.to_sentence
         end
-      else
-        u.apns_token = user[:apns_token]
-        u.save!
       end
       user_arr.push u
     end
