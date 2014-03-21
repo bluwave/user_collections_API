@@ -10,6 +10,10 @@ class Apns < ActiveRecord::Base
       p "path #{cert_path}"
       p "env: #{gateway}"
 
+      my_file_exists = File.exist?(cert_path)
+      p "file exists: #{my_file_exists}"
+
+
       pusher = Grocer.pusher(
           certificate: cert_path, # required
           passphrase: "", # optional
