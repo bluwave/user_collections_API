@@ -7,6 +7,7 @@ class CreateMessages < ActiveRecord::Migration
       t.integer :pdp_id
       t.integer :image_id
       t.integer :rating
+      t.string  :thumbnail_url
 
       t.timestamps
     end

@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20140319210107) do
     t.integer  "pdp_id"
     t.integer  "image_id"
     t.integer  "rating"
+    t.string   "thumbnail_url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

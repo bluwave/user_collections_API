@@ -28,7 +28,7 @@ class API::V1::CollectionsController < ApplicationController
   # POST /collections.json
   def create
 
-    if (params[:user] && params[:collection])
+    if (params[:users] && params[:collection])
       res = CollectionUserTransaction.save_user_and_collection(params)
       if (res.instance_of?(String))
         error_info = {:error => res}

@@ -61,6 +61,6 @@ class API::V1::MessagesController < ApplicationController
   end
 
   def message_params
-    params.permit(:notes, :pdp_id, :image_id, :rating)
+    params.permit(:notes, :pdp_id, :image_id, :rating, :thumbnail_url, :user_id, :collection_id)
   end
 end
