@@ -5,7 +5,7 @@ class Apns < ActiveRecord::Base
     if (!u.apns_token.nil?)
       p "** sending msg, userid: #{user_id} msg: #{message}"
       cert_path = "#{Rails.root}/private/rails_push_test.pem"
-      apns_env_prod = true
+      apns_env_prod = false
       gateway = apns_env_prod ? "feedback.push.apple.com" : "feedback.sandbox.push.apple.com"
       p "path #{cert_path}"
       p "env: #{gateway}"
@@ -23,9 +23,7 @@ class Apns < ActiveRecord::Base
 
       notification = Grocer::Notification.new(
           device_token: u.apns_token,
-          alert: "Hello from Grocer!",
-          badge: 0,
-          expiry: Time.now + 60*60, # optional; 0 is default, meaning the message is not stored
+          alert: "test foobar"
       )
 
       res = pusher.push(notification)
