@@ -29,7 +29,8 @@ class Apns < ActiveRecord::Base
 
     notification = Grocer::Notification.new(
         device_token: token,
-        alert: message
+        alert: message,
+        custom: { "collection_msg" => true }
     )
 
     pusher.push(notification)
