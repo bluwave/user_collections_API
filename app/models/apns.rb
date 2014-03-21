@@ -19,7 +19,7 @@ class Apns < ActiveRecord::Base
       )
 
       notification = Grocer::Notification.new(
-          device_token: "fe15a27d5df3c34778defb1f4f3880265cc52c0c047682223be59fb68500a9a2",
+          device_token: u.apns_token,
           alert: "Hello from Grocer!",
           badge: 0,
           expiry: Time.now + 60*60, # optional; 0 is default, meaning the message is not stored
