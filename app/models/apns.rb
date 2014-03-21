@@ -5,15 +5,13 @@ class Apns < ActiveRecord::Base
     c = message.collection
     owner = message.user_id
     c.users.each do |u|
-      # if (u.id != owner)
+      if (u.id != owner)
         if (!u.apns_token.nil?)
           self.push_apns(message.notes, u.apns_token)
         else
           p "user #{u.email} does not have token"
         end
-      # else
-      #   p "do not send to this owner #{u.email}"
-      # end
+      end
     end
 
   end
