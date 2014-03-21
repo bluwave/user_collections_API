@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20140319210107) do
     t.integer  "collection_id", null: false
     t.integer  "user_id",       null: false
     t.text     "notes"
-    t.integer  "pdp_id"
+    t.string   "pdp_id"
     t.integer  "image_id"
     t.integer  "rating"
     t.string   "thumbnail_url"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20140319210107) do
 
   create_table "users", force: true do |t|
     t.string   "email"
+    t.string   "apns_token"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -33,6 +33,7 @@ class API::V1::MessagesController < ApplicationController
     @message.user_id = u
 
     if @message.save
+      Apns.send_message("hello world", u)
       render json: @message
     else
       render json: @message.errors, status: :unprocessable_entity
