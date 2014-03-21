@@ -48,6 +48,9 @@ class CollectionUserTransaction < ActiveRecord::Base
         else
           return u.errors.full_messages.to_sentence
         end
+      else
+        u.apns_token = user[:apns_token]
+        u.save!
       end
       user_arr.push u
     end
