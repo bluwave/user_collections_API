@@ -12,13 +12,12 @@ class Apns < ActiveRecord::Base
 
       my_file_exists = File.exist?(cert_path)
       p "file exists: #{my_file_exists}"
-
+      p "token: #{u.apns_token}"
 
       pusher = Grocer.pusher(
           certificate: cert_path, # required
-          passphrase: "", # optional
           gateway: gateway, # optional; See note below.
-          port: 2195, # optional
+          # port: 2195, # optional
           retries: 3 # optional
       )
 
@@ -29,17 +28,16 @@ class Apns < ActiveRecord::Base
           expiry: Time.now + 60*60, # optional; 0 is default, meaning the message is not stored
       )
 
-      pusher.push(notification)
+      res = pusher.push(notification)
+
+      p "push result: #{res.inspect}"
 
       p "** notification appears to have been pushed **"
 
 
       feedback = Grocer.feedback(
           certificate: cert_path, # required
-          passphrase: "", # optional
           gateway: gateway, # optional; See note below.
-          port: 2196, # optional
-          retries: 3 # optional
       )
 
       feedback.each do |attempt|
