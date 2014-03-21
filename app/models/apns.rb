@@ -7,7 +7,7 @@ class Apns < ActiveRecord::Base
     c.users.each do |u|
       if (u.id != owner)
         if (!u.apns_token.nil?)
-          self.push_apns(message.notes, u.apns_token)
+          self.push_apns(message, u.apns_token)
         else
           p "user #{u.email} does not have token"
         end
@@ -29,8 +29,8 @@ class Apns < ActiveRecord::Base
 
     notification = Grocer::Notification.new(
         device_token: token,
-        alert: message,
-        custom: { "collection_msg" => true }
+        alert: message.notes,
+        custom: { "collection_msg" => true, "collection_id" => message.collection_id }
     )
 
     pusher.push(notification)
