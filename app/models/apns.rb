@@ -4,7 +4,7 @@ class Apns < ActiveRecord::Base
 
     c = message.collection
     owner = message.user_id
-    c.collaborators.each do |u|
+    c.users.each do |u|
       # if (u.id != owner)
         if (!u.apns_token.nil?)
           self.push_apns(message.notes, u.apns_token)
