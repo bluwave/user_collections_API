@@ -5,7 +5,7 @@ class Apns < ActiveRecord::Base
     if (!u.apns_token.nil?)
       p "** sending msg, userid: #{user_id} msg: #{message}"
       cert_path = "#{Rails.root}/private/rails_push_test.pem"
-      apns_env_prod = false
+      apns_env_prod = true
       gateway = apns_env_prod ? "feedback.push.apple.com" : "feedback.sandbox.push.apple.com"
       p "path #{cert_path}"
       p "env: #{gateway}"
