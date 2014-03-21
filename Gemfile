@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 gem 'rails-api'
 gem 'sqlite3', group: :development
-# gem 'pg', group: :production
+gem 'pg', group: :production
 gem 'active_model_serializers'
 gem 'vine'
 gem 'grocer'
