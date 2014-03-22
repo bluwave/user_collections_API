@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 20140319210107) do
     t.datetime "updated_at"
   end
 
+  add_index "messages", ["pdp_id"], name: "index_messages_on_pdp_id"
+
   create_table "users", force: true do |t|
     t.string   "email"
     t.string   "apns_token"

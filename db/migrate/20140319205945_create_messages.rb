@@ -11,5 +11,6 @@ class CreateMessages < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :messages, :pdp_id
   end
 end

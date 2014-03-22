@@ -1,6 +1,11 @@
 class API::V1::MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
+  def pdp
+    @messages = Message.find_by_pdp_id(params[:id], params[:pdp_id])
+    render json: @messages
+  end
+
   def index
 
     u = User.find(params[:user_id])
