@@ -8,6 +8,7 @@
 
 
 john = User.create(:email => "Gr5@trulia.com", :apns_token =>"996e85f2e7470f62a42d28800f126b1428b64450dda383f6a02d71a2cca8d84d" )
+# john = User.create(:email => "Gr5@trulia.com", :apns_token =>"96020748564c6c78f83bbae89c608a96d2f7a778b0b5016999a57fc2ded9f16c" ) # ipod touch
 jane = User.create(:email => "Jane@doe.com", :apns_token => "dbe890d850ba483d4ea93f2cb6b8aa4deb00696d068917dbda68cecdd0e4ccc0")
 c1 = Collection.create(:name => "homes my wife does not like" )
 CollectionConnection.create(:collection => c1, :user => john)
