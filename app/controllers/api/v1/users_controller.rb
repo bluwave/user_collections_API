@@ -1,4 +1,17 @@
-class UsersController < ApplicationController
+class API::V1::UsersController < ApplicationController
+  # before_filter expires_now() , only:[:token]
+
+ def token
+   @user = User.find(params[:id])
+   token = params[:token_id]
+   @user.apns_token = token
+   if @user.save!
+     render json: @user, status: :ok
+   else
+     render json: @user.errors, status: :unprocessable_entity
+   end
+ end
+
   # GET /users
   # GET /users.json
   def index

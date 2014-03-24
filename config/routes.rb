@@ -6,6 +6,7 @@ CollectionApi::Application.routes.draw do
       # resources :collection_connections, except: [:new, :edit]
       resources :users, except: [:new, :edit] do
         get 'pdp/:pdp_id' => 'messages#pdp', on: :member
+        get 'token/:token_id' => 'users#token', on: :member
         resources :collections, except: [:new, :edit] do
           resources :messages, except: [:new, :edit] do
           end
